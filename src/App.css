@@ -1,38 +1,121 @@
 .App {
+  font-family: "Permanent Marker", monospace;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-family: "Permanent Marker", monospace;
+  font-size: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
+}
+body {
+  background-image: linear-gradient(90deg, lightsalmon, #7ad9ff);
+}
+.imgWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: auto;
+  width: 30%;
+  height: auto;
+}
+select {
+  display: flex;
+  background-color: white;
+  font-family: "Permanent Marker";
+  width: 100px;
+  font-size: large;
+}
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.dropdown {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: auto;
+  margin-top: 20px;
+  width: 30%;
+  height: auto;
+}
+button {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: "Permanent Marker", monospace;
+  width: 100%;
+  height: auto;
+  background-color: #ffbb7a;
+  font-size: 18px;
+}
+
+#categoryInput {
+  align-self: center;
+  margin: 20px;
+  width: 30%;
+  height: 30px;
+}
+.buttonWrapper {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  visibility: hidden;
+}
+p {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Permanent Marker", monospace;
+  padding: 0px 15px 0px 15px;
+}
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.modal-overlay.open {
+  display: flex;
+}
+.modal-content {
+  margin: auto;
+  border-radius: 4px;
+  padding: 16px;
+  width: 640px;
+  height: auto;
+  background-color: white;
+  position: relative;
+  z-index: 10000;
+}
+.modal-content .close-modal {
+  background-color: black;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding-top: 3px;
+  width: 28px;
+  height: 28px;
+  font-family: "Permanent Marker";
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  border-radius: 50%;
+  z-index: 109000;
 }
