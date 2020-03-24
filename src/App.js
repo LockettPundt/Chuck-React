@@ -8,7 +8,7 @@ import ChuckModal from "./components/ChuckModal";
 function App() {
   return (
     <div className="App">
-     <Quote quote="Chuck Says..." />
+     <Quote />
       <ChuckImage />
       <DropdownForm />
       <ChuckModal />
