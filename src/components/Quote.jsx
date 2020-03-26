@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Quote extends Component {
-  state = {
-    quote: "Chuck Says...",
+  constructor(props) {
+    super(props);
+    this.state = {
+      quote: 'Chuck Says...',
+    };
   }
+
+
   render() {
     const { quote } = this.state;
     return (
