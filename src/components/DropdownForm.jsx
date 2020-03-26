@@ -8,20 +8,30 @@ class Dropdown extends Component {
     this.state = {
       data: [],
       selectedOption: '',
+      category: "animal",
+      quote: '',
     };
   }
   
   
   getCategory = async () => {
-      const response = await fetch(`https://api.chucknorris.io/jokes/categories`);
-      const json = await response.json();
-      const result = json.filter(item => item !== "explicit")
-      this.setState({ data: result});
-  }
-  getQuote = async () => {
-    const response = await fetch('https://api.chucknorris.io/jokes/random?category=animal');
+    const response = await fetch(`https://api.chucknorris.io/jokes/categories`);
     const json = await response.json();
-    console.log("THis is the quote:", json.value);
+    const result = json.filter(item => item !== "explicit")
+    this.setState({ data: result});
+  }
+  
+  getQuote = async (e) => {
+    e.preventDefault();
+    const { category } = this.state;
+    const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${category}`);
+    const json = await response.json();
+    let newQuote = json.value;
+    const modalWindow = document.querySelector('.modal-overlay');
+    modalWindow.classList.toggle('open');
+    this.setState({
+      quote: newQuote,
+    })
   }
   
   componentDidMount() {
@@ -29,17 +39,33 @@ class Dropdown extends Component {
   
   }
   
+  newCategory = () => {
+    const newValue = document.querySelector('select').value;
+    this.setState({
+      category: newValue,
+    })
+  }
+  
+  closeModalButton = (e) => {
+    e.preventDefault();
+    const modalWindow = document.querySelector('.modal-overlay');
+    modalWindow.classList.toggle('open');
+  };
+  
+  
+  
+  
   
   
   
   
   
   render() {
-   // let modalStatus;
+    const { quote } = this.state;
     return (
       <div>
         <form className="dropdown" id="categorySelect">
-          <select className="categorySelect">
+          <select className="categorySelect" onChange={this.newCategory}>
             {
             this.state.data.map((item) =>  <option value={item}>{item}</option>
             )}
@@ -49,13 +75,14 @@ class Dropdown extends Component {
           </button>
         </form>
         <div className="modal-overlay">
-        <div className="modal-content">
-          <span id="closeModal" className="close-modal">
-            X
-          </span>
-          <p className="chuckSays">...</p>
+          
+          <div className="modal-content">
+            <span id="closeModal" className="close-modal" onClick={this.closeModalButton}>
+              X
+            </span>
+            <p className="chuckSays">{quote}</p>
+          </div>
         </div>
-      </div>
       </div>
     );
   }
